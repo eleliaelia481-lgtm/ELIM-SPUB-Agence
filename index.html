@@ -3,108 +3,134 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ELIM'SPUB | Premium Agency</title>
+    <title>ELIM'SPUB | Agence Digitale de Prestige</title>
+    
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Plus+Jakarta+Sans:wght@200;400;700;800&display=swap" rel="stylesheet">
+
     <style>
-        body { font-family: 'Montserrat', sans-serif; }
+        :root {
+            --gold: #C5A059;
+            --dark: #05070a;
+        }
         
-        .hero-bg {
-            background: linear-gradient(-45deg, #0f172a, #1e293b, #2563eb, #1e40af);
-            background-size: 400% 400%;
-            animation: gradientBG 15s ease infinite;
+        body { 
+            font-family: 'Montserrat', sans-serif; 
+            background-color: var(--dark); 
+            color: white; 
+            scroll-behavior: smooth; 
         }
 
+        /* --- Fond Animé Hero --- */
+        .hero-bg {
+            background: linear-gradient(-45deg, #05070a, #0f172a, #1e40af, #05070a);
+            background-size: 400% 400%;
+            animation: gradientBG 12s ease infinite;
+        }
         @keyframes gradientBG {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
         }
 
-        .fade-in { animation: fadeIn 1.5s ease-out; }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+        /* --- Effets de Verre --- */
+        .glass-nav {
+            background: rgba(5, 7, 10, 0.8);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
 
-        .glass {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+        /* --- Galerie d'images --- */
+        .img-box { 
+            overflow: hidden; 
+            border-radius: 8px; 
+            position: relative; 
+            background: #111;
         }
+        .img-box img { 
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1); 
+            filter: grayscale(100%) brightness(0.7); 
+        }
+        .img-box:hover img { 
+            transform: scale(1.1); 
+            filter: grayscale(0%) brightness(1); 
+        }
+
+        /* --- Formulaire Minimaliste --- */
+        .input-premium {
+            background: transparent;
+            border-bottom: 1px solid rgba(197, 160, 89, 0.3);
+            padding: 18px 0;
+            width: 100%;
+            color: white;
+            outline: none;
+            transition: 0.4s;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        .input-premium:focus { 
+            border-bottom-color: var(--gold); 
+        }
+        
+        select option { background: #05070a; color: white; }
     </style>
 </head>
-<body class="bg-slate-900 text-white leading-snug overflow-x-hidden">
+<body>
 
-    <nav class="fixed w-full z-50 px-6 py-4 flex justify-between items-center glass">
+    <nav class="fixed w-full z-50 px-8 py-5 flex justify-between items-center glass-nav">
         <div class="flex items-center gap-3">
-            <div class="bg-blue-600 w-12 h-12 flex items-center justify-center rounded-full font-black text-2xl shadow-lg">E</div>
-            <span class="font-black text-2xl tracking-tighter uppercase">Elim'sPub</span>
+            <div class="border-2 border-[#C5A059] text-[#C5A059] w-10 h-10 flex items-center justify-center font-black text-xl">E</div>
+            <span class="font-black text-xl tracking-tighter uppercase">Elim'sPub</span>
         </div>
-        <div class="hidden md:flex gap-10 text-xs font-bold uppercase tracking-widest">
-            <a href="#home" class="hover:text-blue-400 transition">Accueil</a>
-            <a href="#projects" class="hover:text-blue-400 transition">Projets</a>
-            <a href="#about" class="hover:text-blue-400 transition">Expertise</a>
-            <a href="#contact" class="bg-blue-600 px-6 py-2 rounded-full hover:bg-blue-700">Contact</a>
+        <div class="hidden md:flex gap-10 text-[10px] font-bold uppercase tracking-widest items-center">
+            <a href="#home" class="hover:text-[#C5A059] transition">Accueil</a>
+            <a href="#about" class="hover:text-[#C5A059] transition">Expertise</a>
+            <a href="#projects" class="hover:text-[#C5A059] transition">Portfolio</a>
+            <a href="#contact" class="bg-[#C5A059] text-black px-6 py-2 rounded-full font-bold hover:bg-white transition-all">Contact</a>
         </div>
     </nav>
 
     <section id="home" class="hero-bg min-h-screen flex items-center justify-center pt-20 px-6">
-        <div class="max-w-7xl w-full grid md:grid-cols-2 gap-12 items-center">
-            <div class="fade-in space-y-8">
-                <span class="bg-blue-600/20 text-blue-400 px-4 py-2 rounded-full text-xs font-bold uppercase tracking-widest">Agence Digitale 360°</span>
-                <h1 class="text-6xl md:text-8xl font-black uppercase leading-none">
-                    L'Art de <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300">Propulser</span><br>votre Business
+        <div class="max-w-7xl w-full grid md:grid-cols-2 gap-16 items-center">
+            <div data-aos="fade-right" data-aos-duration="1000">
+                <span class="text-[#C5A059] font-bold tracking-[0.4em] text-[10px] uppercase mb-6 block">Agence Digitale Kinshasa</span>
+                <h1 class="text-6xl md:text-8xl font-black uppercase leading-[0.9] mb-8">
+                    L'Art de <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-[#C5A059] to-white italic font-light lowercase">propulser</span><br>votre Business
                 </h1>
-                <p class="text-slate-300 text-lg max-w-lg">
-                    Nous transformons les entreprises ordinaires en marques de prestige grâce au développement web de pointe et au marketing stratégique.
+                <p class="text-slate-400 text-lg max-w-lg mb-10 leading-relaxed">
+                    Nous fusionnons créativité et technologie pour transformer vos idées en marques dominantes.
                 </p>
                 <div class="flex gap-4">
-                    <a href="#contact" class="bg-white text-blue-900 px-8 py-4 rounded-xl font-black uppercase hover:bg-blue-100 transition shadow-2xl">Lancer un projet</a>
+                    <a href="#contact" class="inline-block bg-[#C5A059] text-black px-10 py-5 rounded-sm font-black uppercase text-xs tracking-widest hover:bg-white transition shadow-2xl">
+                        Démarrer l'expérience
+                    </a>
                 </div>
             </div>
 
-            <div class="relative h-[500px] w-full rounded-3xl overflow-hidden shadow-2xl border-4 border-white/10">
+            <div class="relative h-[550px] w-full rounded-2xl overflow-hidden shadow-2xl border border-white/10" data-aos="zoom-in" data-aos-duration="1200">
                 <div id="slider" class="h-full w-full relative">
                     <div class="slide absolute inset-0 transition-opacity duration-1000 opacity-100">
-                        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80" class="w-full h-full object-cover" alt="Entreprise">
-                        <div class="absolute bottom-0 p-8 bg-gradient-to-t from-black/80 to-transparent w-full"><h3 class="text-2xl font-bold">Sièges d'Entreprises</h3></div>
+                        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80" class="w-full h-full object-cover">
+                        <div class="absolute bottom-0 p-8 bg-gradient-to-t from-black/90 to-transparent w-full"><h3 class="text-xl font-bold uppercase tracking-tighter">Architecture Digitale</h3></div>
                     </div>
                     <div class="slide absolute inset-0 transition-opacity duration-1000 opacity-0">
-                        <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1200&q=80" class="w-full h-full object-cover" alt="Hotel">
-                        <div class="absolute bottom-0 p-8 bg-gradient-to-t from-black/80 to-transparent w-full"><h3 class="text-2xl font-bold">Hôtels de Prestige</h3></div>
+                        <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1200&q=80" class="w-full h-full object-cover">
+                        <div class="absolute bottom-0 p-8 bg-gradient-to-t from-black/80 to-transparent w-full"><h3 class="text-xl font-bold uppercase tracking-tighter">Hôtellerie de Luxe</h3></div>
                     </div>
                     <div class="slide absolute inset-0 transition-opacity duration-1000 opacity-0">
-                        <img src="https://images.unsplash.com/photo-1567401893414-76b7b1e5a7a5?auto=format&fit=crop&w=1200&q=80" class="w-full h-full object-cover" alt="Boutique">
-                        <div class="absolute bottom-0 p-8 bg-gradient-to-t from-black/80 to-transparent w-full"><h3 class="text-2xl font-bold">Boutiques de Luxe</h3></div>
+                        <img src="https://images.unsplash.com/photo-1567401893414-76b7b1e5a7a5?auto=format&fit=crop&w=1200&q=80" class="w-full h-full object-cover">
+                        <div class="absolute bottom-0 p-8 bg-gradient-to-t from-black/80 to-transparent w-full"><h3 class="text-xl font-bold uppercase tracking-tighter">Retail Premium</h3></div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="projects" class="py-24 px-6 max-w-7xl mx-auto">
-        <h2 class="text-4xl font-black mb-12 text-center uppercase tracking-tighter italic">Nos Réalisations Récentes</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div class="group relative overflow-hidden rounded-2xl h-80">
-                <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
-            </div>
-            <div class="group relative overflow-hidden rounded-2xl h-80">
-                <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
-            </div>
-            <div class="group relative overflow-hidden rounded-2xl h-80">
-                <img src="https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
-            </div>
-            <div class="group relative overflow-hidden rounded-2xl h-80">
-                <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
-            </div>
-        </div>
-    </section>
-
-    <section id="about" class="py-24 glass">
+    <section id="about" class="py-32 bg-[#080a10]">
         <div class="max-w-4xl mx-auto px-6 text-center">
-            <h2 class="text-4xl font-black mb-10 text-blue-400">EXPERTISE DIGITALE</h2>
-            <div class="text-slate-300 text-xl leading-relaxed space-y-8 text-justify">
+            <h2 class="text-[#C5A059] text-[10px] font-black tracking-[0.6em] uppercase mb-12" data-aos="fade-up">Notre Expertise</h2>
+            <div class="text-slate-300 text-xl md:text-2xl leading-relaxed space-y-10 text-justify font-light" data-aos="fade-up">
                 <p>
                     Le développement de sites web et d'applications est aujourd'hui le moteur principal de la visibilité numérique. Chez <strong>ELIM'SPUB</strong>, nous concevons des écosystèmes complets.
                 </p>
@@ -112,34 +138,89 @@
                     Qu'il s'agisse de sites vitrines élégants, de plateformes e-commerce robustes ou d'applications mobiles intuitives, notre approche repose sur l'innovation constante et l'optimisation de l'expérience utilisateur (UX).
                 </p>
             </div>
-            <div class="mt-12">
-                <a href="https://www.facebook.com/search/top?q=el%20elim%27s%20dev" target="_blank" class="text-3xl font-black text-white hover:text-blue-400 transition">FACEBOOK: EL ELIM'S DEV</a>
+            <div class="mt-16" data-aos="fade-up">
+                <a href="https://www.facebook.com/search/top?q=el%20elim%27s%20dev" target="_blank" class="text-2xl md:text-3xl font-black text-white hover:text-[#C5A059] transition border-b-2 border-[#C5A059] pb-2">
+                    FACEBOOK: EL ELIM'S DEV
+                </a>
             </div>
         </div>
     </section>
 
-    <section id="contact" class="py-24 text-center">
-        <div class="max-w-4xl mx-auto px-6 bg-gradient-to-br from-blue-600 to-blue-800 p-12 md:p-16 rounded-[4rem] shadow-2xl">
-            <h2 class="text-5xl font-black mb-6 uppercase">UN PROJET ?</h2>
-            <p class="text-blue-100 text-xl mb-10 font-medium">Contactez un expert dès maintenant</p>
-            
-            <div class="flex flex-col gap-6 items-center">
-                <a href="tel:+243999631230" class="w-full text-2xl md:text-4xl font-black bg-white text-blue-900 px-8 py-5 rounded-2xl hover:scale-105 transition shadow-xl">
-                    +243 999 631 230
-                </a>
+    <section id="projects" class="py-32 px-6 bg-[#05070a]">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
+                <h2 class="text-5xl md:text-7xl font-black uppercase tracking-tighter leading-none" data-aos="fade-right">Projets <br><span class="text-[#C5A059]">Sélectionnés</span></h2>
+                <p class="text-slate-500 max-w-xs text-sm uppercase tracking-widest font-bold" data-aos="fade-left">Visualisez l'impact de nos stratégies créatives.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="img-box h-[550px]" data-aos="fade-up"><img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover"></div>
+                <div class="img-box h-[550px] md:mt-16" data-aos="fade-up" data-aos-delay="100"><img src="https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover"></div>
+                <div class="img-box h-[550px]" data-aos="fade-up" data-aos-delay="200"><img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover"></div>
                 
-                <a href="mailto:eelieelia6922@gmail.com" class="text-xl md:text-2xl font-bold text-blue-100 hover:text-white transition underline decoration-2 underline-offset-8">
-                    eelieelia6922@gmail.com
-                </a>
+                <div class="img-box h-[450px]" data-aos="fade-up"><img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover"></div>
+                <div class="img-box h-[450px] md:-mt-16" data-aos="fade-up" data-aos-delay="100"><img src="https://images.unsplash.com/photo-1559136555-9303baea8ebd?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover"></div>
+                <div class="img-box h-[450px]" data-aos="fade-up" data-aos-delay="200"><img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover"></div>
             </div>
         </div>
     </section>
 
-    <footer class="py-10 text-center text-slate-500 text-xs tracking-widest uppercase">
-        © 2026 ELIM'SPUB - Digital Excellence Group
+    <section id="contact" class="py-40 px-6 border-t border-white/5">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-24 items-start">
+            
+            <div data-aos="fade-right">
+                <h2 class="text-7xl md:text-9xl font-black uppercase leading-[0.8] mb-12 tracking-tighter">Let's <br> <span class="text-[#C5A059]">Talk.</span></h2>
+                <div class="space-y-8">
+                    <p class="text-slate-500 text-xl font-light max-w-sm leading-relaxed">Envie de Gmail ou WhatsApp ? Choisissez votre méthode préférée ci-dessous.</p>
+                    <div class="pt-8">
+                        <span class="text-[10px] font-black text-[#C5A059] tracking-[0.4em] uppercase block mb-4">Contact Direct</span>
+                        <a href="mailto:eelieelia6922@gmail.com" class="text-2xl md:text-3xl font-bold hover:text-[#C5A059] transition break-all italic">eelieelia6922@gmail.com</a>
+                    </div>
+                </div>
+            </div>
+
+            <div data-aos="fade-left">
+                <form id="contactForm" class="space-y-10">
+                    <input type="text" id="userName" placeholder="VOTRE NOM COMPLET" class="input-premium" required>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div>
+                            <label class="text-[9px] text-[#C5A059] font-bold tracking-widest uppercase mb-2 block">Service</label>
+                            <select id="userProject" class="input-premium !py-4">
+                                <option value="Branding">BRANDING & DESIGN</option>
+                                <option value="Marketing Digital">MARKETING DIGITAL</option>
+                                <option value="Développement Web">CRÉATION SITE WEB</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="text-[9px] text-[#C5A059] font-bold tracking-widest uppercase mb-2 block">Envoyer via</label>
+                            <select id="sendMethod" class="input-premium !py-4">
+                                <option value="whatsapp">WHATSAPP (Rapide)</option>
+                                <option value="gmail">GMAIL (Professionnel)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <textarea id="userMessage" placeholder="VOTRE MESSAGE..." class="input-premium h-32" required></textarea>
+                    
+                    <button type="submit" class="flex items-center gap-10 group text-xl font-black uppercase tracking-widest text-[#C5A059]">
+                        Valider l'envoi
+                        <span class="w-20 h-[2px] bg-[#C5A059] transition-all group-hover:w-32"></span>
+                    </button>
+                </form>
+            </div>
+
+        </div>
+    </section>
+
+    <footer class="py-20 text-center opacity-30 border-t border-white/5">
+        <p class="text-[10px] font-bold tracking-[1em] uppercase">ELIM'SPUB EXECUTIVE • KINSHASA 2026</p>
     </footer>
 
     <script>
+        AOS.init({ duration: 1200, once: true });
+
+        // Slider
         let currentSlide = 0;
         const slides = document.querySelectorAll('.slide');
         function nextSlide() {
@@ -147,7 +228,28 @@
             currentSlide = (currentSlide + 1) % slides.length;
             slides[currentSlide].style.opacity = '1';
         }
-        setInterval(nextSlide, 4000);
+        setInterval(nextSlide, 5000);
+
+        // Logique d'envoi mixte (WhatsApp ou Gmail)
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('userName').value;
+            const project = document.getElementById('userProject').value;
+            const msg = document.getElementById('userMessage').value;
+            const method = document.getElementById('sendMethod').value;
+            const emailDest = "eelieelia6922@gmail.com";
+            const phoneDest = "243999631230";
+
+            if(method === "whatsapp") {
+                const whatsappMessage = `*DEMANDE ELIM'SPUB*%0A%0A*Nom:* ${name}%0A*Projet:* ${project}%0A*Message:* ${msg}`;
+                window.open(`https://wa.me/${phoneDest}?text=${whatsappMessage}`, '_blank');
+            } else {
+                const subject = `Demande de Projet - ${project}`;
+                const body = `Bonjour ELIM'SPUB,\n\nJe m'appelle ${name}.\nJe vous contacte pour le service suivant : ${project}.\n\nMessage :\n${msg}`;
+                window.location.href = `mailto:${emailDest}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+            }
+        });
     </script>
 
 </body>
